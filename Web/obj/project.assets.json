@@ -485,6 +485,20 @@
         "runtime": {
           "bin/placeholder/Data.dll": {}
         }
+      },
+      "UI/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "Data": "1.0.0",
+          "Microsoft.AspNetCore.Components.WebAssembly": "7.0.0"
+        },
+        "compile": {
+          "bin/placeholder/UI.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/UI.dll": {}
+        }
       }
     },
     "net7.0/browser-wasm": {
@@ -964,6 +978,20 @@
         },
         "runtime": {
           "bin/placeholder/Data.dll": {}
+        }
+      },
+      "UI/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "Data": "1.0.0",
+          "Microsoft.AspNetCore.Components.WebAssembly": "7.0.0"
+        },
+        "compile": {
+          "bin/placeholder/UI.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/UI.dll": {}
         }
       }
     }
@@ -1817,13 +1845,19 @@
       "type": "project",
       "path": "../Data/Data.csproj",
       "msbuildProject": "../Data/Data.csproj"
+    },
+    "UI/1.0.0": {
+      "type": "project",
+      "path": "../UI/UI.csproj",
+      "msbuildProject": "../UI/UI.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net7.0": [
       "Data >= 1.0.0",
       "Microsoft.AspNetCore.Components.WebAssembly >= 7.0.0",
-      "Microsoft.AspNetCore.Components.WebAssembly.DevServer >= 7.0.0"
+      "Microsoft.AspNetCore.Components.WebAssembly.DevServer >= 7.0.0",
+      "UI >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -1861,6 +1895,9 @@
           "projectReferences": {
             "D:\\Projects\\MAUI Blazor Hybrid\\WeatherReport\\Data\\Data.csproj": {
               "projectPath": "D:\\Projects\\MAUI Blazor Hybrid\\WeatherReport\\Data\\Data.csproj"
+            },
+            "D:\\Projects\\MAUI Blazor Hybrid\\WeatherReport\\UI\\UI.csproj": {
+              "projectPath": "D:\\Projects\\MAUI Blazor Hybrid\\WeatherReport\\UI\\UI.csproj"
             }
           }
         }
