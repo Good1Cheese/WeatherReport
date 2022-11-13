@@ -12,19 +12,22 @@ public class WeatherForecastService : IWeatherForecastService
         _httpClient = httpClient;
     }
 
-    // Нужно получать позицию пользователя, затем прогноз погоды 
-    // https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/CITY?unitGroup=metric&key=6PGHAX6MUKV9MGUUQ3452BDY7&contentType=json
-
-    // Желательно делать два запроса, а не три
-    // https://jsonip.com - ip
-    // https://ipapi.co/api/ - город по ip
-    // https://www.visualcrossing.com/- погода по координатам/городу
     public async Task<WeatherForecast> Get()
     {
         var request = await _httpClient.GetFromJsonAsync<WeatherForecastRequest>("https://jsonip.com");
-        request = await _httpClient.GetFromJsonAsync<WeatherForecastRequest>($"https://ipapi.co/{request.IP}/json");
-      
+        request = await _httpClient.GetFromJsonAsync<WeatherForecastRequest>($"https://ipapi.co/{request?.IP}/json");
 
-        return request;
+        WeatherForecast forecast = new();
+
+        forecast.Location = string.Format($"{request.City}, {request.Region}, {request.Postal}");
+
+        request = await _httpClient.GetFromJsonAsync<WeatherForecastRequest>($"https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/{request.City}?unitGroup=metric&include=current&key=API_KEY&contentType=json");
+       
+        forecast.Temperature = request.Conditions.Temperature;
+        forecast.Humidity = request.Conditions.Humidity;
+        forecast.WindSpeed = request.Conditions.WindSpeed;
+
+        return forecast;
     }
 }
+    
