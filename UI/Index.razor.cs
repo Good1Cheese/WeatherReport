@@ -8,7 +8,7 @@ public partial class Index
 {
     [Inject] public IWeatherForecastService WeatherForecastService { get; set; } = default!;
     [Inject] public IUserLocationService UserLocationService { get; set; } = default!;
-    [Inject] public IWeatherPrintService WeatherPrintService { get; set; } = default!;
+    [Inject] public IForecastOutputService WeatherPrintService { get; set; } = default!;
 
     public WeatherForecast? Forecast { get; set; }
     public bool Clicked { get; set; }

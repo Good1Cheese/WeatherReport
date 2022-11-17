@@ -4,7 +4,7 @@ using static Data.Models.WeatherForecastRequest;
 
 namespace Data.Services;
 
-public class WeatherPrintService : IWeatherPrintService
+public class WeatherPrintService : IForecastOutputService
 {
     public WeatherForecast Get(Conditions weather, UserLocation user)
     {
