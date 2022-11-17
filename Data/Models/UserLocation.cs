@@ -5,14 +5,14 @@ namespace Data.Models;
 public class UserLocation
 {
     [JsonPropertyName("ip")]
-    public string IP { get; set; }
+    public string IP { get; set; } = default!;
 
     [JsonPropertyName("city")]
-    public string City { get; set; }
+    public string City { get; set; } = default!;
 
     [JsonPropertyName("region")]
-    public string Region { get; set; }
+    public string Region { get; set; } = default!;
 
     [JsonPropertyName("postal")]
-    public string Postal { get; set; }
+    public string Postal { get; set; } = default!;
 }

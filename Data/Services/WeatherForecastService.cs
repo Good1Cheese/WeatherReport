@@ -13,9 +13,9 @@ public class WeatherForecastService : IWeatherForecastService
         _httpClient = httpClient;
     }
 
-    public async Task<WeatherForecastRequest.Conditions> Get(UserLocation user)
+    public async Task<WeatherForecastRequest.Forecast> Get(string city)
     {
-        var request = await _httpClient.GetFromJsonAsync<WeatherForecastRequest>($"https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/{user.City}?unitGroup=metric&include=current&key=API-KEY&contentType=json");
+        var request = await _httpClient.GetFromJsonAsync<WeatherForecastRequest>($"https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/{city}?unitGroup=metric&include=current&key=API-KEY&contentType=json");
 
         return request.Weather;
     }

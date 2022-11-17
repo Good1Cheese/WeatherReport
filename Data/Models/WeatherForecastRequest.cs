@@ -5,9 +5,9 @@ namespace Data.Models;
 public class WeatherForecastRequest
 {
     [JsonPropertyName("currentConditions")]
-    public Conditions Weather { get; set; }
+    public Forecast Weather { get; set; } = default!;
 
-    public class Conditions
+    public class Forecast
     {
         [JsonPropertyName("temp")]
         public double Temperature { get; set; } = default!;
