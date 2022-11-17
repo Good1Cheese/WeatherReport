@@ -1,5 +1,5 @@
-﻿using Data.Models;
-using Data.Services;
+﻿using Data.Interfaces;
+using Data.Models;
 using Microsoft.AspNetCore.Components;
 
 namespace UI;
@@ -7,6 +7,8 @@ namespace UI;
 public partial class Index
 {
     [Inject] public IWeatherForecastService WeatherForecastService { get; set; } = default!;
+    [Inject] public IUserLocationService UserLocationService { get; set; } = default!;
+    [Inject] public IWeatherPrintService WeatherPrintService { get; set; } = default!;
 
     public WeatherForecast? Forecast { get; set; }
     public bool Clicked { get; set; }
@@ -15,6 +17,9 @@ public partial class Index
     {
         Clicked = true;
 
-        Forecast = await WeatherForecastService.Get();
+        var user = await UserLocationService.Get();
+        var weather  = await WeatherForecastService.Get(user);
+
+        Forecast = WeatherPrintService.Get(weather, user);
     }
 }

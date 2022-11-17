@@ -479,6 +479,9 @@
       "Data/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "Microsoft.AspNetCore.Components.WebAssembly": "7.0.0"
+        },
         "compile": {
           "bin/placeholder/Data.dll": {}
         },
@@ -973,6 +976,9 @@
       "Data/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "Microsoft.AspNetCore.Components.WebAssembly": "7.0.0"
+        },
         "compile": {
           "bin/placeholder/Data.dll": {}
         },
