@@ -1,6 +1,3 @@
-using Data.Interfaces;
-using Data.Services;
-
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
 
@@ -11,7 +8,7 @@ services.AddCors(setup =>
 {
     setup.AddDefaultPolicy(policy =>
     {
-        policy.AllowAnyOrigin();
+        policy.WithOrigins("http://localhost:5184");
     });
 });
 
