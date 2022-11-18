@@ -1,8 +1,6 @@
-﻿using Data.Models;
-
-namespace Data.Interfaces;
+﻿namespace Data.Interfaces;
 
 public interface IWeatherForecastService
 {
-    Task<WeatherRequest.Weather> Get(string city);
+    Task Get();
 }

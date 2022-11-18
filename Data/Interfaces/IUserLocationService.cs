@@ -1,8 +1,6 @@
-﻿using Data.Models;
-
-namespace Data.Interfaces;
+﻿namespace Data.Interfaces;
 
 public interface IUserLocationService
 {
-    Task<UserLocation> Get();
+    Task Get();
 }

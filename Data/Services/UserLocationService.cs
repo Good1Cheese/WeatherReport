@@ -1,23 +1,26 @@
 ﻿using Data.Interfaces;
 using Data.Models;
 using System.Net.Http.Json;
+using static Data.Models.WeatherForecast;
 
 namespace Data.Services;
 
 public class UserLocationService : IUserLocationService
 {
     private readonly HttpClient _httpClient;
+    private readonly WeatherForecast _forecast;
 
-    public UserLocationService(HttpClient httpClient)
+    public UserLocationService(HttpClient httpClient, WeatherForecast weatherForecast)
     {
         _httpClient = httpClient;
+        _forecast = weatherForecast;
     }
 
-    public async Task<UserLocation> Get()
+    public async Task Get()
     {
-        var location = await _httpClient.GetFromJsonAsync<UserLocation>("https://jsonip.com");
-        location = await _httpClient.GetFromJsonAsync<UserLocation>($"https://ipapi.co/{location?.IP}/json");
+        var location = await _httpClient.GetFromJsonAsync<GeoLocation>("https://jsonip.com");
+        location = await _httpClient.GetFromJsonAsync<GeoLocation>($"https://ipapi.co/{location.IP}/json");
 
-        return location;
+        _forecast.Location = location;
     }
 }

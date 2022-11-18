@@ -1,4 +1,5 @@
 using Data.Interfaces;
+using Data.Models;
 using Data.Services;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
@@ -12,6 +13,7 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 
 services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
+services.AddSingleton(new WeatherForecast());
 services.AddScoped<IUserLocationService, UserLocationService>();
 services.AddScoped<IWeatherForecastService, WeatherForecastService>();
 

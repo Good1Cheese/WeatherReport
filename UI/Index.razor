@@ -6,7 +6,7 @@
 
         @if (Clicked)
         {
-            @if (Forecast is null)
+            @if (!Done)
             {
                 <div class="spinner-border m-auto" role="status">
                     <span class="visually-hidden">Loading...</span>
@@ -16,13 +16,13 @@
             {
                 <div class="forecast d-flex flex-column align-items-center">
                     <p class="forecast-text">Your location:</p>
-                    <p class="forecast-text">@Forecast.Location</p>
+                    <p class="forecast-text">@Forecast.Location.City,@Forecast.Location.Region,@Forecast.Location.Postal</p>
                 </div>
 
                 <div class="forecast d-flex flex-column align-items-center">
-                    <p class="forecast-text">@Forecast.Temperature℃</p>
-                    <p class="forecast-text">Humidity: @Forecast.Humidity%</p>
-                    <p class="forecast-text">Wind speed: @Forecast.WindSpeed</p>
+                    <p class="forecast-text">@Forecast.Result.Temp℃</p>
+                    <p class="forecast-text">Humidity: @Forecast.Result.Humidity%</p>
+                    <p class="forecast-text">Wind speed: @Forecast.Result.WindSpeed</p>
                 </div>
             }
         }

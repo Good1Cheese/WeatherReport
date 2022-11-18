@@ -1,19 +1,26 @@
-using static Data.Models.WeatherRequest;
+using System.Text.Json.Serialization;
 
 namespace Data.Models;
 
-public class WeatherForecast
+public partial class WeatherForecast
 {
-    public WeatherForecast(Weather weather, UserLocation location)
+    [JsonPropertyName("currentConditions")]
+    public Weather Result { get; set; } = new();
+
+    public GeoLocation Location { get; set; } = new();
+
+    public class Weather
     {
-        Location = string.Format($"{location.City}, {location.Region}, {location.Postal}");
-        Temperature = weather.Temp;
-        Humidity = weather.Humidity;
-        WindSpeed = weather.WindSpeed;
+        public double Temp { get; set; } = default!;
+        public double Humidity { get; set; } = default!;
+        public double WindSpeed { get; set; } = default!;
     }
 
-    public string Location { get; set; } = default!;
-    public double Temperature { get; set; } = default!;
-    public double Humidity { get; set; } = default!;
-    public double WindSpeed { get; set; } = default!;
+    public class GeoLocation
+    {
+        public string IP { get; set; } = default!;
+        public string City { get; set; } = default!;
+        public string Region { get; set; } = default!;
+        public string Postal { get; set; } = default!;
+    }
 }

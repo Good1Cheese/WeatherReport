@@ -6,20 +6,21 @@ namespace UI;
 
 public partial class Index
 {
-    [Inject] public IUserLocationService UserLocation { get; set; } = default!;
+    [Inject] public IUserLocationService UserLocation { get; init; } = default!;
+    [Inject] public IWeatherForecastService WeatherForecast { get; init; } = default!;
 
-    [Inject] public IWeatherForecastService WeatherForecast { get; set; } = default!;
+    [Inject] public WeatherForecast? Forecast { get; init; }
 
-    public WeatherForecast? Forecast { get; set; }
-    public bool Clicked { get; set; }
+    public bool Clicked { get; private set; }
+    public bool Done { get; private set; }
 
     public async Task GetForecast()
     {
         Clicked = true;
 
-        var location = await UserLocation.Get();
-        var weather = await WeatherForecast.Get(location.City);
+        await UserLocation.Get();
+        await WeatherForecast.Get();
 
-        Forecast = new(weather, location);
+        Done = true;
     }
 }
