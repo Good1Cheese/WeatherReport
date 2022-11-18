@@ -19,6 +19,6 @@ public class WeatherForecastService : IWeatherForecastService
 
         var request = await _httpClient.GetFromJsonAsync<WeatherForecastRequest>($"https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/{city}?unitGroup=metric&include=current&key={APIKey}&contentType=json");
 
-        return request.Weather;
+        return request.СurrentConditions;
     }
 }

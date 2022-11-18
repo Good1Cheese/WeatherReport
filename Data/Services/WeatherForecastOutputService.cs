@@ -11,7 +11,7 @@ public class WeatherForecastOutputService : IWeatherForecastOutputService
         return new()
         {
             Location = string.Format($"{location.City}, {location.Region}, {location.Postal}"),
-            Temperature = forecast.Temperature,
+            Temperature = forecast.Temp,
             Humidity = forecast.Humidity,
             WindSpeed = forecast.WindSpeed
         };
