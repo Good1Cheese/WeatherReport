@@ -7,10 +7,10 @@ namespace UI;
 public partial class Index
 {
     [Inject]
-    public IUserLocationService UserLocationService { get; set; } = default!;
+    public IUserLocationService UserLocation { get; set; } = default!;
 
     [Inject]
-    public IWeatherForecastService WeatherForecastService { get; set; } = default!;
+    public IWeatherForecastService WeatherForecast { get; set; } = default!;
 
     public WeatherForecast? Forecast { get; set; }
     public bool Clicked { get; set; }
@@ -19,9 +19,9 @@ public partial class Index
     {
         Clicked = true;
 
-        var location = await UserLocationService.Get();
-        var forecast = await WeatherForecastService.Get(location.City);
+        var location = await UserLocation.Get();
+        var weather = await WeatherForecast.Get(location.City);
 
-        Forecast = new(forecast, location);
+        Forecast = new(weather, location);
     }
 }
