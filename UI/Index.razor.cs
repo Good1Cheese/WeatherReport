@@ -6,11 +6,9 @@ namespace UI;
 
 public partial class Index
 {
-    [Inject]
-    public IUserLocationService UserLocation { get; set; } = default!;
+    [Inject] public IUserLocationService UserLocation { get; set; } = default!;
 
-    [Inject]
-    public IWeatherForecastService WeatherForecast { get; set; } = default!;
+    [Inject] public IWeatherForecastService WeatherForecast { get; set; } = default!;
 
     public WeatherForecast? Forecast { get; set; }
     public bool Clicked { get; set; }
