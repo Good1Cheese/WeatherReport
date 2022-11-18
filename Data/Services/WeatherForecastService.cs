@@ -13,12 +13,12 @@ public class WeatherForecastService : IWeatherForecastService
         _httpClient = httpClient;
     }
 
-    public async Task<WeatherForecastRequest.Forecast> Get(string city)
+    public async Task<WeatherRequest.Weather> Get(string city)
     {
         string APIKey = await _httpClient.GetStringAsync("https://localhost:7011/api/weatherforecast/key");
 
-        var request = await _httpClient.GetFromJsonAsync<WeatherForecastRequest>($"https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/{city}?unitGroup=metric&include=current&key={APIKey}&contentType=json");
+        var request = await _httpClient.GetFromJsonAsync<WeatherRequest>($"https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/{city}?unitGroup=metric&include=current&key={APIKey}&contentType=json");
 
-        return request.СurrentConditions;
+        return request.Result;
     }
 }

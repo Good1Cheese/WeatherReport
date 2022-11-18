@@ -4,5 +4,5 @@ namespace Data.Interfaces;
 
 public interface IWeatherForecastService
 {
-    Task<WeatherForecastRequest.Forecast> Get(string city);
+    Task<WeatherRequest.Weather> Get(string city);
 }

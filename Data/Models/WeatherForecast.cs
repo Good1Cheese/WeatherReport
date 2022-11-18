@@ -1,15 +1,15 @@
-using static Data.Models.WeatherForecastRequest;
+using static Data.Models.WeatherRequest;
 
 namespace Data.Models;
 
 public class WeatherForecast
 {
-    public WeatherForecast(Forecast forecast, UserLocation location)
+    public WeatherForecast(Weather weather, UserLocation location)
     {
         Location = string.Format($"{location.City}, {location.Region}, {location.Postal}");
-        Temperature = forecast.Temp;
-        Humidity = forecast.Humidity;
-        WindSpeed = forecast.WindSpeed;
+        Temperature = weather.Temp;
+        Humidity = weather.Humidity;
+        WindSpeed = weather.WindSpeed;
     }
 
     public string Location { get; set; } = default!;

@@ -2,12 +2,12 @@
 
 namespace Data.Models;
 
-public class WeatherForecastRequest
+public class WeatherRequest
 {
     [JsonPropertyName("currentConditions")]
-    public Forecast СurrentConditions { get; set; } = default!;
+    public Weather Result { get; set; } = default!;
 
-    public class Forecast
+    public class Weather
     {
         public double Temp { get; set; } = default!;
         public double Humidity { get; set; } = default!;
